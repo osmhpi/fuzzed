@@ -18,8 +18,8 @@ services:
       dockerfile: ./frontend/docker/Dockerfile.development
     environment:
       ORE_BACKEND_DAEMON: http://ore-back-dev:8000
-      ORE_SERVER_URL: http://ore-front-dev:8000
-      ORE_SERVER: ore-front-dev
+      ORE_SERVER_URL: http://localhost
+      ORE_SERVER: localhost # this adds an entry to allowed hosts
       ORE_DB_NAME: ore 
       ORE_DB_USER: ore 
       ORE_DB_PASSWORD: ore 
