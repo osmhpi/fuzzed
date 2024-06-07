@@ -11,19 +11,20 @@ services:
     volumes:
       - postgres-volume:/var/lib/postgresql/data  
   ore-front-dev:
-    image: ore-front-dev
+    image: troeger/ore-front:0.8.4
     container_name: ore-front-dev
     build: 
       context: .
       dockerfile: ./frontend/docker/Dockerfile.development
     environment:
       ORE_BACKEND_DAEMON: http://ore-back-dev:8000
-      ORE_SERVER_URL: http://ore-front-dev:8000
-      ORE_SERVER: ore-front-dev
+      ORE_SERVER_URL: http://localhost
+      ORE_SERVER: localhost # this adds an entry to allowed hosts
       ORE_DB_NAME: ore 
       ORE_DB_USER: ore 
       ORE_DB_PASSWORD: ore 
       ORE_DB_HOST: ore-db-dev
+      ORE_MODE: development
     tty: true
     ports:
       - 8000:8000
@@ -34,7 +35,7 @@ services:
       - ./frontend:/ore-front
       - ./common:/ore-common 
   ore-back-dev:
-    image: ore-back-dev
+    image: troeger/ore-back:0.8.4
     container_name: ore-back-dev
     build: 
       context: .
