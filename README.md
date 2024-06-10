@@ -4,6 +4,8 @@
 
 # ORE - The Open Reliability Editor (former FuzzEd)
 
+> This is a legacy application without maintenance. This is not meant to run anywhere exposed to the internet. Please make sure to run a reverse proxy with basicauth in front. All versions are pinned so that the `Dockerfile` can build. For a working example please see `docker-compose.yml`. Make sure to remember your username. Because there is no import, you can back up you db with all graphs `docker compose exec ore-db pg_dump -U ore -d ore > backup.sql` and load with `docker-compose exec -T ore-db psql -U ore -d ore < backup.sql`. If the database is already used, you can drop the old one with `docker-compose exec ore-db dropdb -U ore ore` and create an empty new one with `docker-compose exec ore-db createdb -U ore ore`. Make sure to keep all data safe.
+
 Note: FuzzEd becomes ORE. We are in the middle of that process, so don't get confused while both names are still in use.
 
 ORE is an browser-based editor for drawing and analyzing dependability models. The currently supported types are:
